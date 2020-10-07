@@ -1,70 +1,78 @@
 #headline {
-    width: 100%;
-    height: 130px;
-    background: $content-background-color;
+    @include width-height(100%, 130px);
+    background: $red;
     text-align: center;
-    margin: 0 auto;
-  }
-  #headline h1 {
-      @include color();
+    @include margin(0 auto);
+    h1 {
+      color: $white;
       font-size: 2.5em;
       font-weight: 100;
       padding-top: 50px;
-      @if max-width == 767px {
-          @include break(767px){font-size:2em;padding-top:50px;};
-        }
-      @if max-width == 459px {
-          @include break(459px){font-size:1.5em;padding-top:30px;};
-        }
+      @include break(767px) {
+        @include headline-h1(767px);
+        // font-size: 2em;
+        // padding-top: 50px;
+      }
+      @include break(459px) {
+        @include headline-h1(459px);
+        // font-size: 1.5em;
+        // padding-top: 30px;
+      }
+    }
   }
   #content {
-      width: 940px;
-      margin: 20px auto;
-      @if max-width == 959px {
-          @include break(959px){width:inherit;};
-        }
-  }
-  #content h3 {
-    @include color($header-h3-color);
-    font-size: 2em;
-    font-weight: 400;
-    @if max-width == 459px {
-      @include break(459px){font-size:1.6em;};
+    width: 940px;
+    @include margin(20px auto);
+    @include break(959px) {
+      width: inherit;
     }
-  }
-  #content #products {
+    h3 {
+      color: $grey;
+      font-size: 2em;
+      font-weight: 400;
+      @include break(459px) {
+        font-size: 1.6em;
+      }
+    }
+    #products {
       width: 460px;
       float: left;
-      @if max-width == 959px {
-          @include break(959px){width:46%;margin:0 2%;};
-        }
-      @if max-width == 767px {
-          @include break(767px){width:96%;margin:0 2%;float:none;};
-        }
-  }
-  #content #products img {
-    float: left;
-    margin-right: 20px;
-  }
-  #content #products article {
-    margin-bottom: 40px;
-    img{
-      @if max-width == 459px {
-        @include break(459px){display:none;};
-      } 
+      @include break(959px) {
+        width: 46%;
+        margin: 0 2%;
+      }
+      @include break(767px) {
+        width: 96%;
+        @include margin(0 2%);
+        float: none;
+      }
+      img {
+        float: left;
+        margin-right: 20px;
+      }
+      article {
+        margin-bottom: 40px;
+      }
+      h4 {
+        line-height: 1em;
+      }
     }
-    
-  }
-  #content #products h4 {
-    line-height: 1em;
-  }
-  #content #testimonials {
+    #testimonials {
       width: 460px;
       float: right;
-      @if max-width == 959px {
-          @include break(959px){width:46%;margin:0 2%;};
-        }
-      @if max-width == 767px {
-          @include break(767px){width:96%;margin:0 2%;float:none;};
-        }
+      @include break(959px) {
+        width: 46%;
+        @include margin(0 2%);
+      }
+      @include break(767px) {
+        width: 96%;
+        @include margin(0 2%);
+        float: none;
+      }
+    }
+    article img {
+      @include break(459px) {
+        display: none;
+      }
+    }
   }
